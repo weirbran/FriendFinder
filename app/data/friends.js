@@ -1,10 +1,4 @@
-// ===============================================================================
-// DATA
-// Below data will hold all of the people in the database.
-// Initially we just set it equal to a "dummy" customer.
-// But you could have it be an empty array as well.
-// ===============================================================================
-
+//array of possible matches
 var friendArray = [
   {
     name: "Ahmed",
@@ -19,5 +13,5 @@ var friendArray = [
   }
 ];
 
-// Note how we export the array. This makes it accessible to other files using require.
+// exports the array to make it accessible to other files
 module.exports = friendArray;

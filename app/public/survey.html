@@ -7,12 +7,6 @@
   <title>Friend Finder</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Latest compiled and minified CSS & JS -->
-  <!--Bootstrap-->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-
-  <!--Font Awesome Icons-->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <!--jQuery-->
   <script src="https://code.jquery.com/jquery.js"></script>
@@ -20,6 +14,14 @@
   <!--Chosen-->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js"></script>
+  <!--Bootstrap-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+  <!--Font Awesome Icons-->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
 
 
 </head>
@@ -45,7 +47,7 @@
 
     <h3>Question 1</h3>
     <h6>You always try to do the right thing, no matter how difficult it is.</h6>
-    <select class="chosen-select" data-placeholder="Select an option">
+    <select class="chosen-select" data-placeholder="Select an option" id="question1">
       <option value=""></option>
       <option value="1">1 (Strongly Agree)</option>
       <option value="2">2</option>
@@ -56,7 +58,7 @@
 
     <h3>Question 2</h3>
     <h6>You feel most comfortable with a routine; spontaneity makes you uncomfortable.</h6>
-    <select class="chosen-select" data-placeholder="Select an option">
+    <select class="chosen-select" data-placeholder="Select an option" id="question2">
       <option value=""></option>
       <option value="1">1 (Strongly Agree)</option>
       <option value="2">2</option>
@@ -67,7 +69,7 @@
 
     <h3>Question 3</h3>
     <h6>Public speaking is easy.</h6>
-    <select class="chosen-select" data-placeholder="Select an option">
+    <select class="chosen-select" data-placeholder="Select an option" id="question3">
       <option value=""></option>
       <option value="1">1 (Strongly Agree)</option>
       <option value="2">2</option>
@@ -78,7 +80,7 @@
 
     <h3>Question 4</h3>
     <h6>You strive to be the very best, like no one ever was.</h6>
-    <select class="chosen-select" data-placeholder="Select an option">
+    <select class="chosen-select" data-placeholder="Select an option" id="question4">
       <option value=""></option>
       <option value="1">1 (Strongly Agree)</option>
       <option value="2">2</option>
@@ -89,7 +91,7 @@
 
     <h3>Question 5</h3>
     <h6>You're always looking for a new adventure, new sights, new sounds.</h6>
-    <select class="chosen-select" data-placeholder="Select an option">
+    <select class="chosen-select" data-placeholder="Select an option" id="question5">
       <option value=""></option>
       <option value="1">1 (Strongly Agree)</option>
       <option value="2">2</option>
@@ -100,7 +102,7 @@
 
     <h3>Question 6</h3>
     <h6>Spirituality and/or religion are important factors in your life.</h6>
-    <select class="chosen-select" data-placeholder="Select an option">
+    <select class="chosen-select" data-placeholder="Select an option" id="question6">
       <option value=""></option>
       <option value="1">1 (Strongly Agree)</option>
       <option value="2">2</option>
@@ -111,7 +113,7 @@
 
     <h3>Question 7</h3>
     <h6>There are never any acceptable reasons to break the rules.</h6>
-    <select class="chosen-select" data-placeholder="Select an option">
+    <select class="chosen-select" data-placeholder="Select an option" id="question7">
       <option value=""></option>
       <option value="1">1 (Strongly Agree)</option>
       <option value="2">2</option>
@@ -122,7 +124,7 @@
 
     <h3>Question 8</h3>
     <h6>You're energized by obstacles and challenges.</h6>
-    <select class="chosen-select" data-placeholder="Select an option">
+    <select class="chosen-select" data-placeholder="Select an option" id="question8">
       <option value=""></option>
       <option value="1">1 (Strongly Agree)</option>
       <option value="2">2</option>
@@ -133,7 +135,7 @@
 
     <h3>Question 9</h3>
     <h6>You openly and easily share your thoughts and feelings with others.</h6>
-    <select class="chosen-select" data-placeholder="Select an option">
+    <select class="chosen-select" data-placeholder="Select an option" id="question9">
       <option value=""></option>
       <option value="1">1 (Strongly Agree)</option>
       <option value="2">2</option>
@@ -143,8 +145,8 @@
     </select>
 
     <h3>Question 10</h3>
-    <h6>You make plans and you stick to them</h6>
-    <select class="chosen-select" data-placeholder="Select an option">
+    <h6>You make plans and you stick to them.</h6>
+    <select class="chosen-select" data-placeholder="Select an option" id="question10">
       <option value=""></option>
       <option value="1">1 (Strongly Agree)</option>
       <option value="2">2</option>
@@ -166,6 +168,27 @@
 
   </div>
 
+  <div id="matchModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">We've found a match!</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p id="matchName"></p>
+          <img id="matchPic" src="" alt="No Image">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
 
   <script>
@@ -177,7 +200,34 @@
       max_selected_options: 1
     });
 
+    $("#submit").on("click", function (event) {
+      event.preventDefault()
 
+      var userData = {
+        name: $("#name").val().trim(),
+        photo: $("#photo").val().trim(),
+        scores: [$("#question1").val(), $("#question2").val(), $("#question3").val(), $("#question4").val(), $("#question5").val(), $("#question6").val(), $("#question7").val(), $("#question8").val(), $("#question9").val(), $("#question10").val()]
+      }
+
+      //this code will push the user's input to the server array (friendsData)
+      $.post("/api/friends", userData, function (data) {
+
+        //modal code
+
+        $("#matchName").text(data.name);
+        $("#matchPic").attr("src", data.photo)
+        $('#matchModal').modal('toggle')
+
+
+
+        console.log("data pushed to server");
+        $("#name").val("");
+        $("#photo").val("");
+        $("#question1").val(""); $("#question2").val(""); $("#question3").val(""); $("#question4").val(""); $("#question5").val(""); $("#question6").val(""); $("#question7").val(""); $("#question8").val(""); $("#question9").val(""); $("#question10").val("");
+
+
+      })
+    })
 
 
   </script>
