@@ -5,43 +5,39 @@ module.exports = function(app) {
     res.json(friendData);
   });
 
-  // API POST Requests
-  // Below code handles when a user submits a form and thus submits data to the server.
-  // In each of the below cases, when a user submits form data (a JSON object)
-  // ...the JSON is pushed to the appropriate JavaScript array
-  // (ex. User fills out a reservation request... this data is then sent to the server...
-  // Then the server saves the data to the tableData array)
-  // ---------------------------------------------------------------------------
+  // Below code handles when a user submits their survey and thus submits data to the server.
 
   app.post("/api/friends", function(req, res) {
     var userData = req.body;
 
+    // converts each of user's scores to integers
     for (var i = 0; i < userData.scores.length; i++) {
       userData.scores[i] = parseInt(userData.scores[i]);
     }
 
-    console.log(userData);
-    console.log(friendData);
-
     var matchIndex = 0;
 
-    var minimumDifference = 50;
+    var minimumDifference = 0;
 
+    // loops through each of the friend objects in the friends array
     for (var i = 0; i < friendData.length; i++) {
       var totalDifference = 0;
 
+      // loops through each of the friend's scores
       for (var j = 0; j < friendData[i].scores.length; j++) {
+        // calculates each friend score to each user score and sums the total difference
         var difference = Math.abs(userData.scores[j] - friendData[i].scores[j]);
         totalDifference += difference;
       }
 
+      // finds the index of the score with the most difference
       if (totalDifference <= minimumDifference) {
         matchIndex = i;
         minimumDifference = totalDifference;
       }
     }
 
-    //compare each of the scores first, then return the index of the value with the lowest score
+    //compares each of the scores first, then return the index of the value with the lowest score
 
     console.log(matchIndex);
 

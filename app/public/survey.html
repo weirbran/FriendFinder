@@ -189,8 +189,6 @@
     </div>
   </div>
 
-
-
   <script>
 
     $(".chosen-select").chosen({
@@ -209,22 +207,19 @@
         scores: [$("#question1").val(), $("#question2").val(), $("#question3").val(), $("#question4").val(), $("#question5").val(), $("#question6").val(), $("#question7").val(), $("#question8").val(), $("#question9").val(), $("#question10").val()]
       }
 
-      //this code will push the user's input to the server array (friendsData)
+      //posts the user's input to the server array (friendsData)
       $.post("/api/friends", userData, function (data) {
 
-        //modal code
-
+        //modal code that grabs the data for the user's best match and pushes it to the modal
         $("#matchName").text(data.name);
         $("#matchPic").attr("src", data.photo)
+        //displays the modal on the screen
         $('#matchModal').modal('toggle')
 
-
-
-        console.log("data pushed to server");
+       //clears all survey data after submit
         $("#name").val("");
         $("#photo").val("");
         $("#question1").val(""); $("#question2").val(""); $("#question3").val(""); $("#question4").val(""); $("#question5").val(""); $("#question6").val(""); $("#question7").val(""); $("#question8").val(""); $("#question9").val(""); $("#question10").val("");
-
 
       })
     })
